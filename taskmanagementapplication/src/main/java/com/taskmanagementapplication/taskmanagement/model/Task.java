@@ -14,7 +14,6 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int taskID;
-    private String taskDesc;
     private String taskName;
     private Date dueDate;
     private boolean completed;
@@ -28,14 +27,6 @@ public class Task {
 
     public void setTaskID(int taskID) {
         this.taskID = taskID;
-    }
-
-    public String getTaskDesc() {
-        return taskDesc;
-    }
-
-    public void setTaskDesc(String taskDesc) {
-        this.taskDesc = taskDesc;
     }
 
     public String getTaskName() {
