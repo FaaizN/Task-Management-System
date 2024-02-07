@@ -1,9 +1,6 @@
 package com.taskmanagementapplication.taskmanagement.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -17,6 +14,10 @@ public class Task {
     private String taskName;
     private Date dueDate;
     private boolean completed;
+
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
 
     public Task() {
     }
