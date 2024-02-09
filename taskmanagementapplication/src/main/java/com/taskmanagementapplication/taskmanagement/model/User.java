@@ -1,9 +1,8 @@
 package com.taskmanagementapplication.taskmanagement.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class User {
@@ -11,25 +10,31 @@ public class User {
     // Set ID as primary key
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int userID;
-    private String name;
+    private int user_id;
+
+    @Column(name = "user_name")
+    private String userName;
+
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    private List<Task> tasks;
 
     public User() {
     }
 
     public int getUserID() {
-        return userID;
+        return user_id;
     }
 
     public void setUserID(int userID) {
-        this.userID = userID;
+        this.user_id = userID;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
+
 }

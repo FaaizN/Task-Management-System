@@ -1,7 +1,7 @@
 package com.taskmanagementapplication.datacollector.controller;
 
-import com.taskmanagementapplication.datacollector.model.TaskData;
-import com.taskmanagementapplication.datacollector.model.UserData;
+import com.taskmanagementapplication.taskmanagement.model.Task;
+import com.taskmanagementapplication.taskmanagement.model.User;
 import com.taskmanagementapplication.datacollector.service.DataCollectorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,12 +18,12 @@ public class DataCollectorController {
     private DataCollectorService dataCollectorService;
 
     @GetMapping("/tasks")
-    public List<TaskData> getAllTasks() {
+    public List<Task> getAllTasks() {
         return dataCollectorService.getAllTasks();
     }
 
     @GetMapping("/users")
-    public List<UserData> getAllUsers() {
+    public List<User> getAllUsers() {
         return dataCollectorService.getAllUsers();
     }
 }

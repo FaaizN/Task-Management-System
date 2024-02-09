@@ -10,24 +10,25 @@ public class Task {
     // Set ID as primary key
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int taskID;
+    @Column(name = "task_id")
+    private int task_id;
     private String taskName;
     private Date dueDate;
     private boolean completed;
 
     @ManyToOne
     @JoinColumn(name="user_id")
-    private User user;
+    private User owner;
 
     public Task() {
     }
 
     public int getTaskID() {
-        return taskID;
+        return task_id;
     }
 
     public void setTaskID(int taskID) {
-        this.taskID = taskID;
+        this.task_id = taskID;
     }
 
     public String getTaskName() {

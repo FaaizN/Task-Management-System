@@ -1,11 +1,10 @@
 package com.taskmanagementapplication.datacollector.service;
 
-import com.taskmanagementapplication.datacollector.model.TaskData;
-import com.taskmanagementapplication.datacollector.model.UserData;
-import com.taskmanagementapplication.datacollector.repository.TaskDataRepository;
-import com.taskmanagementapplication.datacollector.repository.UserDataRepository;
+import com.taskmanagementapplication.taskmanagement.model.Task;
+import com.taskmanagementapplication.taskmanagement.model.User;
+import com.taskmanagementapplication.taskmanagement.repository.TaskRepository;
+import com.taskmanagementapplication.taskmanagement.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.task.TaskExecutionProperties;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,14 +16,14 @@ import java.text.SimpleDateFormat;
 public class DataCollectorServiceImplementation implements  DataCollectorService{
 
     @Autowired
-    private TaskDataRepository taskDataRepository;
+    private TaskRepository taskRepository;
 
     @Autowired
-    private UserDataRepository userDataRepository;
+    private UserRepository userRepository;
 
     @Override
-    public List<TaskData> getAllTasks() {
-        List<TaskData> allTasks = taskDataRepository.findAll();
+    public List<Task> getAllTasks() {
+        List<Task> allTasks = taskRepository.findAll();
         allTasks.forEach(task -> {
             // Filter the names for null values
             if (task.getTaskName() == null) {
@@ -52,13 +51,13 @@ public class DataCollectorServiceImplementation implements  DataCollectorService
     }
 
     @Override
-    public List<UserData> getAllUsers() {
-        List<UserData> allUsers = userDataRepository.findAll();
+    public List<User> getAllUsers() {
+        List<User> allUsers = userRepository.findAll();
         allUsers.forEach(user ->{
             // Filter the name for null values
-            if (user.getName() == null){
+            if (user.getUserName() == null){
                 // Set the default value
-                user.setName("NA");
+                user.setUserName("NA");
             }
         });
         return allUsers;

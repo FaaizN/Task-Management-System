@@ -1,16 +1,42 @@
 package com.taskmanagementapplication.dataanalyzer.service;
 
-import com.taskmanagementapplication.datacollector.model.TaskData;
+import com.taskmanagementapplication.taskmanagement.model.Task;
+import com.taskmanagementapplication.taskmanagement.repository.TaskRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
+@Service
 public class DataAnalyzerServiceImplementation implements DataAnalyzerService{
 
+    @Autowired
+    private TaskRepository taskRepository;
+
+
+
     @Override
-    public void analyzeTaskData(List<TaskData> taskDataList) {
-        // Check to see whether the task has been completed
-        taskDataList.forEach(status -> {
-            boolean taskStatus = status.isCompleted();
-        });
+    public double analyzeTaskData(int userID){
+
+        // Get the current month and year
+        LocalDate currentDate = LocalDate.now();
+        int currentMonth = currentDate.getMonthValue();
+        int currentYear = currentDate.getYear();
+
+        // Count the completed tasks for the user within the current month
+        List<Task> completedTasks = taskRepository.findUserCompleted(true);
+
+        // Count the completed tasks for the user within the current month
+        List<Task> totalTasks = taskRepository.findUserID(userID);
+
+        // Calculate the completion percentage
+        double completionPercentage = 0.0;
+        if(!totalTasks.isEmpty()) {
+            completionPercentage = (double) completedTasks.size() / totalTasks.size() * 100.0;
+        }
+
+        return completionPercentage;
     }
 }
