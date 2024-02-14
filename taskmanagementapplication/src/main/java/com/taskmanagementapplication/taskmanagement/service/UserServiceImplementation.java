@@ -17,7 +17,17 @@ public class UserServiceImplementation implements UserService{
     }
 
     @Override
-    public boolean existsByUsername(String userName){
-        return userRepository.existsByUsername(userName);
+    public boolean existsByUserName(String userName){
+        return userRepository.existsByUserName(userName);
+    }
+
+    @Override
+    public User getUserByID(int userID) {
+        return userRepository.findById(userID).orElse(null);
+    }
+
+    @Override
+    public User getUserByUserName(String userName){
+        return userRepository.findByUserName(userName);
     }
 }

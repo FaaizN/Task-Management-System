@@ -1,46 +1,28 @@
 package com.taskmanagementapplication.taskmanagement.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
 
 import java.util.Date;
 
-@Entity
-public class Task {
-
-    // Set ID as primary key
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "task_id")
-    private int task_id;
-
-    @Column(name = "task_name")
-    @JsonProperty("task_name")
+public class TaskRequest {
     private String taskName;
 
-    @Column(name = "due_date")
-    @JsonProperty("due_date")
     @JsonFormat(pattern = "MM/dd/yyyy")
     private Date dueDate;
 
     private boolean completed;
+    private String userName; // Assuming this is the username associated with the task
 
-    @ManyToOne
-    @JoinColumn(name="user_id")
-    private User user;
-
-    public Task() {
+    // Constructors, getters, and setters
+    // Constructor
+    public TaskRequest(String taskName, Date dueDate, boolean completed, String userName) {
+        this.taskName = taskName;
+        this.dueDate = dueDate;
+        this.completed = completed;
+        this.userName = userName;
     }
 
-    public int getTaskID() {
-        return task_id;
-    }
-
-    public void setTaskID(int taskID) {
-        this.task_id = taskID;
-    }
-
+    // Getters and Setters
     public String getTaskName() {
         return taskName;
     }
@@ -65,7 +47,11 @@ public class Task {
         this.completed = completed;
     }
 
-    public User getUser() {return user;}
+    public String getUserName() {
+        return userName;
+    }
 
-    public void setUser(User user) {this.user = user;}
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 }

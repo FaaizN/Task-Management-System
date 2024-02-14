@@ -15,7 +15,7 @@ public class User {
     @Column(name = "user_name")
     private String userName;
 
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Task> tasks;
 
     public User() {

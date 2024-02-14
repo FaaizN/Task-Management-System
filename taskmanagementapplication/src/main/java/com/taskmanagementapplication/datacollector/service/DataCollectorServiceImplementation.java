@@ -5,6 +5,7 @@ import com.taskmanagementapplication.taskmanagement.model.User;
 import com.taskmanagementapplication.taskmanagement.repository.TaskRepository;
 import com.taskmanagementapplication.taskmanagement.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +21,12 @@ public class DataCollectorServiceImplementation implements  DataCollectorService
 
     @Autowired
     private UserRepository userRepository;
+
+    @Override
+    public boolean doesUsernameExist(String userName) {
+        return userRepository.existsByUserName(userName);
+    }
+
 
     @Override
     public List<Task> getAllTasks() {
@@ -62,4 +69,9 @@ public class DataCollectorServiceImplementation implements  DataCollectorService
         });
         return allUsers;
     }
+
+    public List<Task> getTasksByUserID(int  userID){
+       return taskRepository.findUserID(userID);
+    }
+
 }

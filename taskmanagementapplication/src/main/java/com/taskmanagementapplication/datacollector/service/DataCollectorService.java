@@ -8,4 +8,6 @@ import java.util.List;
 public interface DataCollectorService {
         List<Task> getAllTasks();
         List<User> getAllUsers();
+        boolean doesUsernameExist(String userName);
+        List<Task> getTasksByUserID(int userID);
 }
