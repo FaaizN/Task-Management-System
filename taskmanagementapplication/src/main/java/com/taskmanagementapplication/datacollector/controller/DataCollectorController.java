@@ -25,10 +25,6 @@ public class DataCollectorController {
 
     @Autowired
     private TaskService taskService;
-    /*@GetMapping("/tasks")
-    public List<Task> getAllTasks() {
-        return dataCollectorService.getAllTasks();
-    }*/
 
     @GetMapping("/tasks")
     public ResponseEntity<List<Task>> getUserTasks(@RequestParam String userName){
@@ -42,31 +38,6 @@ public class DataCollectorController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
-
-
-    /*// Add a task to the database
-    @PostMapping("/add")
-    public ResponseEntity<String> add(@RequestBody Task task, @RequestParam String userName){
-        // Check to see username exists
-        User user = userService.getUserByUserName(userName);
-        if(user != null) {
-            // Associate task with the retrieved user
-            task.setUser(user);
-
-            // Save the task
-            taskService.saveTask(task);
-
-            return ResponseEntity.ok("Task Created Successfully");
-        } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username");
-        }
-    }*/
-
-
-
-
-
-
 
 
     @GetMapping("/users")

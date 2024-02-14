@@ -4,18 +4,14 @@ import com.taskmanagementapplication.taskmanagement.model.Task;
 import com.taskmanagementapplication.taskmanagement.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class DataAnalyzerServiceImplementation implements DataAnalyzerService{
 
     @Autowired
     private TaskRepository taskRepository;
-
-
 
     @Override
     public double analyzeTaskData(int userID){
@@ -36,7 +32,6 @@ public class DataAnalyzerServiceImplementation implements DataAnalyzerService{
         if(!totalTasks.isEmpty()) {
             completionPercentage = (double) completedTasks.size() / totalTasks.size() * 100.0;
         }
-
         return completionPercentage;
     }
 }
