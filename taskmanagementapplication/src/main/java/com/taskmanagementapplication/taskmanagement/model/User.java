@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
-@Entity
+@Entity(name = "user_table")
 public class User {
 
     // Set ID as primary key
