@@ -56,14 +56,14 @@
 				<artifactId>heroku-maven-plugin</artifactId>
 				<version>3.0.7</version>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.11.0</version> <!-- Or a version that supports Java 17 -->
-				<configuration>
-					<release>17</release> <!-- Specify the Java release -->
-				</configuration>
-			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-compiler-plugin</artifactId>-->
+<!--				<version>3.11.0</version> &lt;!&ndash; Or a version that supports Java 17 &ndash;&gt;-->
+<!--				<configuration>-->
+<!--					<release>17</release> &lt;!&ndash; Specify the Java release &ndash;&gt;-->
+<!--				</configuration>-->
+<!--			</plugin>-->
 
 		</plugins>
 	</build>
