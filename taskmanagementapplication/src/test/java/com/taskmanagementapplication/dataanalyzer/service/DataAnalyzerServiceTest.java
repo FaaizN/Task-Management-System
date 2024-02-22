@@ -20,6 +20,7 @@ import java.util.List;
 
 public class DataAnalyzerServiceTest {
 
+
     @Mock
     private TaskRepository taskRepository;
 
